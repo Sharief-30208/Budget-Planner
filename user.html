@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+    <h1>💰 User Dashboard</h1>
+
+    <div class="card">
+        <h2>Set Budget</h2>
+
+        <input id="budget" type="number" placeholder="Enter monthly budget">
+        <button onclick="saveBudget()">Save Budget</button>
+    </div>
+
+    <div class="card">
+        <h2>Add Expense</h2>
+
+        <input id="expense" placeholder="Expense name">
+        <input id="amount" type="number" placeholder="Amount">
+
+        <button onclick="addExpense()">Add Expense</button>
+    </div>
+
+    <div class="card">
+        <h2>My Expenses</h2>
+
+        <p id="list">No expenses added.</p>
+
+        <h3 id="balance">Remaining Budget: ₹0</h3>
+    </div>
+
+    <button class="logout" onclick="logout()">Logout</button>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
