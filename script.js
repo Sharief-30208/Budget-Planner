@@ -21,6 +21,7 @@ function login() {
         user == localStorage.getItem("user") &&
         pass == localStorage.getItem("pass")
     ) {
+        localStorage.setItem("currentUser", user);
         window.location.href = "user.html";
     }
     else {
@@ -30,8 +31,9 @@ function login() {
 
 function saveBudget() {
     let budget = document.getElementById("budget").value;
+    let user = localStorage.getItem("currentUser");
 
-    localStorage.setItem("budget", budget);
+    localStorage.setItem("budget_" + user, budget);
 
     alert("Budget saved!");
     updateBalance();
@@ -40,15 +42,18 @@ function saveBudget() {
 function addExpense() {
     let name = document.getElementById("expense").value;
     let amount = Number(document.getElementById("amount").value);
+    let user = localStorage.getItem("currentUser");
 
-    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    let key = "expenses_" + user;
+
+    let expenses = JSON.parse(localStorage.getItem(key)) || [];
 
     expenses.push({
         name: name,
         amount: amount
     });
 
-    localStorage.setItem("expenses", JSON.stringify(expenses));
+    localStorage.setItem(key, JSON.stringify(expenses));
 
     displayExpenses();
     updateBalance();
@@ -59,9 +64,17 @@ function displayExpenses() {
 
     if (!list) return;
 
-    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    let user = localStorage.getItem("currentUser");
+    let expenses = JSON.parse(
+        localStorage.getItem("expenses_" + user)
+    ) || [];
 
     list.innerHTML = "";
+
+    if (expenses.length == 0) {
+        list.innerHTML = "No expenses added.";
+        return;
+    }
 
     expenses.forEach(function(expense) {
         list.innerHTML +=
@@ -74,8 +87,13 @@ function updateBalance() {
 
     if (!balance) return;
 
-    let budget = Number(localStorage.getItem("budget")) || 0;
-    let expenses = JSON.parse(localStorage.getItem("expenses")) || [];
+    let user = localStorage.getItem("currentUser");
+
+    let budget =
+        Number(localStorage.getItem("budget_" + user)) || 0;
+
+    let expenses =
+        JSON.parse(localStorage.getItem("expenses_" + user)) || [];
 
     let total = 0;
 
@@ -95,6 +113,7 @@ function viewUser() {
 }
 
 function logout() {
+    localStorage.removeItem("currentUser");
     window.location.href = "index.html";
 }
 
