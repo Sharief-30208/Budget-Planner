@@ -7,20 +7,69 @@
 
 <body>
 
-<div class="container">
-    <h1>⚙️ Admin Dashboard</h1>
+<div class="dashboard">
 
-    <div class="card">
-        <h2>Admin Module</h2>
+    <header>
 
-        <p>Manage and monitor the Budget Planner system.</p>
+        <div>
+            <h1>⚙️ Admin Dashboard</h1>
+            <p>Budget Planner Administration</p>
+        </div>
 
-        <button onclick="viewUser()">View Registered User</button>
+        <button class="logout" onclick="logout()">
+            Logout
+        </button>
 
-        <p id="user"></p>
+    </header>
+
+
+    <div class="main-grid">
+
+        <!-- ADMIN MODULE -->
+
+        <div class="card">
+
+            <h2>Admin Module</h2>
+
+            <p>
+                Admin can monitor registered users
+                in the Budget Planner system.
+            </p>
+
+            <button onclick="viewUsers()">
+                View Registered Users
+            </button>
+
+        </div>
+
+
+        <!-- SYSTEM INFORMATION -->
+
+        <div class="card">
+
+            <h2>System Information</h2>
+
+            <p>Application: Budget Planner</p>
+            <p>Technology: HTML, CSS, JavaScript</p>
+            <p>Storage: Local Storage</p>
+
+        </div>
+
     </div>
 
-    <button class="logout" onclick="logout()">Logout</button>
+
+    <!-- USERS -->
+
+    <div class="card">
+
+        <h2>👥 Registered Users</h2>
+
+        <div id="userList">
+            Click the button to view users.
+        </div>
+
+    </div>
+
 </div>
 
 <script src="script.js"></script>

@@ -1,35 +1,91 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Budget Planner</title>
+    <title>Budget Planner - Login</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="box">
-    <h1>Budget Planner</h1>
+<div class="login-page">
 
-    <h2>Login</h2>
+    <div class="welcome">
+        <h1>💰 Budget Planner</h1>
+        <p>Manage your budget and expenses easily.</p>
+    </div>
 
-    <input id="username" placeholder="Username">
-    <input id="password" type="password" placeholder="Password">
+    <!-- LOGIN CARD -->
+    <div class="card">
 
-    <select id="role">
-        <option value="user">User</option>
-        <option value="admin">Admin</option>
-    </select>
+        <h2>Login</h2>
 
-    <button onclick="login()">Login</button>
+        <select id="role" onchange="changeRole()">
+            <option value="user">User Login</option>
+            <option value="admin">Admin Login</option>
+        </select>
 
-    <hr>
+        <!-- USER LOGIN -->
+        <div id="userLogin">
 
-    <h2>Signup</h2>
+            <input type="email"
+                   id="email"
+                   placeholder="Email">
 
-    <input id="newUser" placeholder="New Username">
-    <input id="newPass" type="password" placeholder="New Password">
+            <input type="tel"
+                   id="phone"
+                   placeholder="Phone Number">
 
-    <button onclick="signup()">Signup</button>
+            <input type="password"
+                   id="password"
+                   placeholder="Password">
+
+        </div>
+
+        <!-- ADMIN LOGIN -->
+        <div id="adminLogin" style="display:none;">
+
+            <input id="adminUsername"
+                   placeholder="Admin Username">
+
+            <input type="password"
+                   id="adminPassword"
+                   placeholder="Admin Password">
+
+        </div>
+
+        <button onclick="login()">Login</button>
+
+        <p class="small">
+            New user? Create an account below.
+        </p>
+
+    </div>
+
+
+    <!-- SIGNUP CARD -->
+    <div class="card">
+
+        <h2>Create Account</h2>
+
+        <input id="newUser"
+               placeholder="Username">
+
+        <input type="email"
+               id="newEmail"
+               placeholder="Email">
+
+        <input type="tel"
+               id="newPhone"
+               placeholder="Phone Number">
+
+        <input type="password"
+               id="newPass"
+               placeholder="Password">
+
+        <button onclick="signup()">Signup</button>
+
+    </div>
+
 </div>
 
 <script src="script.js"></script>
